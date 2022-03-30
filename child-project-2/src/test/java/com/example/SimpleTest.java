@@ -3,7 +3,6 @@ package com.example;
 import static com.google.common.truth.Truth.assertThat;
 
 import com.google.cloud.storage.StorageOptions;
-import com.google.cloud.storage.testing.RemoteStorageHelper;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -12,12 +11,11 @@ import org.junit.runners.JUnit4;
 @RunWith(JUnit4.class)
 public class SimpleTest {
 
-  private static StorageOptions storageOptions;
+  private static MyOptions myOptions;
 
   @Before
   public void setUp(){
-    RemoteStorageHelper gcsHelper = RemoteStorageHelper.create();
-    storageOptions = gcsHelper.getOptions();
+    MyStorageHelper gcsHelper = MyStorageHelper.create();
   }
 
   @Test
@@ -28,8 +26,8 @@ public class SimpleTest {
         CloudStorageConfiguration.builder()
             .autoDetectRequesterPays(true)
             .build();
-    RemoteStorageHelper gcsHelper = RemoteStorageHelper.create();
-    MySampleFileSystem.forBucket("bucket",config, gcsHelper.getOptions());
+    MyStorageHelper gcsHelper = MyStorageHelper.create();
+    MySampleFileSystem.forBucket("bucket",config, null);
     assertThat("hello1").isEqualTo("hello1");
   }
 }

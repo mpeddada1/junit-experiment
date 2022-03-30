@@ -39,7 +39,7 @@ public class MySampleFileSystemProvider extends FileSystemProvider {
     System.out.println("**** MY SAMPLE FILE SYSTEM PROVIDER ****");
   }
 
-  private static StorageOptions storageOptions = null;
+  private static MyOptions storageOptions = new MyOptions();
   private Storage storage;
 
   private static class LazyPathIterator extends AbstractIterator<Path> {
@@ -98,7 +98,7 @@ public class MySampleFileSystemProvider extends FileSystemProvider {
    */
   @VisibleForTesting
   public static void setStorageOptions(@Nullable StorageOptions newStorageOptions) {
-    storageOptions = newStorageOptions;
+    storageOptions = null;
   }
 
   public static void setDefaultCloudStorageConfiguration(

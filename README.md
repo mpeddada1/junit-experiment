@@ -16,6 +16,8 @@ Error: The class com.example.MySampleFileSystemProvider has already been initial
 
 Including `--initialize-build-time=com.example.MySampleFileSystemProvider` results in a **successful build**.
 
+[UPDATE]
+When `MyOptions` is instantiated in `MySampleFileSystemProvider` with `private static MyOptions storageOptions = new MyOptions();`, we will notice that the build breaks because it is unexpectedly initialized at build time. 
 
 ## child-project-3 : Testing with Category tag
 Experiment with Junit annotations and tags for native image testing.
